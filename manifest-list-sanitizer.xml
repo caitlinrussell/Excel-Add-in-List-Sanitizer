@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" 
+            xsi:type="TaskPaneApp">
+  <Id>eb22ff3b-5fbd-4b6d-af4e-2f058513c3aa</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Caitbal</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="List Sanitizer"/>
+  <Description DefaultValue="Consolidate your contacts"/>
+  <IconUrl DefaultValue="https://localhost:8443/images/icon-80.png" />
+  <SupportUrl DefaultValue="http://dev.office.com" />
+
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:8443/app/home/home.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+<!--Begin AddinCommandsMode integration -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Description resid="Caitbal.Description" />
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <FunctionFile resid="Caitbal.FunctionFile.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Caitbal.Group1">
+                <Label resid="Caitbal.Group1Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Caitbal.TaskpaneButton.Icon16" />
+                  <bt:Image size="32" resid="Caitbal.TaskpaneButton.Icon32" />
+                  <bt:Image size="80" resid="Caitbal.TaskpaneButton.Icon80" />
+                </Icon>
+
+                <Control xsi:type="Button" id="Caitbal.FunctionButton">
+                  <Label resid="Caitbal.FunctionButton.Label" />
+                  <Supertip>
+                    <Title resid="Caitbal.FunctionButton.Label" />
+                    <Description resid="Caitbal.FunctionButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Caitbal.FunctionButton.Icon16" />
+                    <bt:Image size="32" resid="Caitbal.FunctionButton.Icon32" />
+                    <bt:Image size="80" resid="Caitbal.FunctionButton.Icon80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>sanitizeSelection</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="Caitbal.TaskpaneButton">
+                  <Label resid="Caitbal.TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="Caitbal.TaskpaneButton.Label" />
+                    <Description resid="Caitbal.TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Caitbal.TaskpaneButton.Icon16" />
+                    <bt:Image size="32" resid="Caitbal.TaskpaneButton.Icon32" />
+                    <bt:Image size="80" resid="Caitbal.TaskpaneButton.Icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Caitbal.Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Caitbal.TaskpaneButton.Icon16" DefaultValue="https://localhost:8443/images/icon-16.png" />
+        <bt:Image id="Caitbal.TaskpaneButton.Icon32" DefaultValue="https://localhost:8443/images/icon-32.png" />
+        <bt:Image id="Caitbal.TaskpaneButton.Icon80" DefaultValue="https://localhost:8443/images/icon-80.png" />
+        <bt:Image id="Caitbal.FunctionButton.Icon16" DefaultValue="https://localhost:8443/images/icon-16.png" />
+        <bt:Image id="Caitbal.FunctionButton.Icon32" DefaultValue="https://localhost:8443/images/icon-32.png" />
+        <bt:Image id="Caitbal.FunctionButton.Icon80" DefaultValue="https://localhost:8443/images/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Caitbal.FunctionFile.Url" DefaultValue="https://localhost:8443/app/home/FunctionFile.html" />
+        <bt:Url id="Caitbal.Taskpane.Url" DefaultValue="https://localhost:8443/app/home/home.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Caitbal.FunctionButton.Label" DefaultValue="Sanitize Lists" />
+        <bt:String id="Caitbal.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
+        <bt:String id="Caitbal.Group1Label" DefaultValue="List Sanitizer" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Caitbal.FunctionButton.Tooltip" DefaultValue="Click to sanitize your lists" />
+        <bt:String id="Caitbal.TaskpaneButton.Tooltip" DefaultValue="Click to show taskpane" />
+        <bt:String id="Caitbal.Item1.Tooltip" DefaultValue="Click to show taskpane" />
+        <bt:String id="Caitbal.Description" DefaultValue="Sanitize your mailing lists" />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
